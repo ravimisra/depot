@@ -19,6 +19,12 @@
 	padding-left: 2em;
 	background: white;
 }
+
+#main h1{
+	border-bottom: #333333 dotted;
+	line-height: 50px;
+}
+
 #side {
 	float: left;
 	padding-top: 1em;
@@ -32,6 +38,21 @@
 	font-size: small;
 }
 
+#store .entry{
+	border-bottom: #333333 dotted;
+	margin-bottom: 20px;
+}
 #store .entry form, #store .entry form div{
 	display: inline;
+}
+
+#store .cart_title {
+	font: 120% bold;
+}
+#store .item_price, #store .total_line {
+	text-align: right;
+}
+#store .total_line .total_cell {
+	font-weight: bold;
+	border-top: 1px solid #595;
 }
