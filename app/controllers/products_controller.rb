@@ -13,12 +13,17 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
-    end
+	begin
+		@product = Product.find(params[:id])
+	rescue ActiveRecord::RecordNotFound
+		logger.error "Attempt to access invalid product #{params[:id]}"
+		redirect_to products_url, :notice => 'Invalid Product'
+	else
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.json { render json: @product }
+		end
+	end
   end
 
   # GET /products/new

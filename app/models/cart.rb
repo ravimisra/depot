@@ -7,6 +7,8 @@ class Cart < ActiveRecord::Base
 			current_item.quantity += 1
 		else
 			current_item = LineItem.new(:product_id=>product_id)
+			# capture the price whenever a new line item is created.
+			current_item.price = current_item.product.price
 			line_items << current_item
 		end
 		current_item

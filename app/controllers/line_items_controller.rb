@@ -13,13 +13,18 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
-    @line_item = LineItem.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @line_item }
-    end
-  end
+	begin
+		@line_item = LineItem.find(params[:id])
+	rescue ActiveRecord::RecordNotFound
+		logger.error "Attempt to access invalid line_item #{params[:id]}"
+		redirect_to store_url, :notice => 'Invalid Line Item'
+	else
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.json { render json: @line_item }
+		end
+	end
+end
 
   # GET /line_items/new
   # GET /line_items/new.json
@@ -79,7 +84,12 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+	  if current_cart.line_items.empty?
+        format.html { redirect_to(store_url, :notice=> 'Your cart is empty') }
+      else 
+        format.html { redirect_to(current_cart, :notice=> 'Item has been removed from your cart.') } 
+      end
+	  #format.html { redirect_to(@line_item.cart, :notice => 'Item has been removed from your cart.') }
       format.json { head :no_content }
     end
   end

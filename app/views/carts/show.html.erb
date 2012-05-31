@@ -1,3 +1,6 @@
+<% if notice %> 
+    <p id="notice"><%= notice %></p> 
+<% end %>
 <div class="cart_title" >Your Cart</div>
 <table>
 	<% for item in @cart.line_items %>
@@ -5,6 +8,7 @@
 			<td><%= item.quantity %>&times;</td>
 			<td><%= item.product.title %></td>
 			<td class="item_price" ><%= number_to_currency(item.total_price) %></td>
+			<td class="item_removal" ><%= button_to "Remove", item, :method => :delete, :confirm => 'Are you sure?' %></td>
 		</tr>
 	<% end %>
 	<tr class="total_line" >
@@ -14,3 +18,4 @@
 </table>
 <%= button_to 'Empty cart', @cart, :method => :delete,
 :confirm => 'Are you sure?' %>
+<%= button_to 'Back', store_path %>
