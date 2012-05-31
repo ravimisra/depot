@@ -8,7 +8,7 @@
 			<td><%= item.quantity %>&times;</td>
 			<td><%= item.product.title %></td>
 			<td class="item_price" ><%= number_to_currency(item.total_price) %></td>
-			<td class="item_removal" ><%= button_to "Remove", item, :method => :delete, :confirm => 'Are you sure?' %></td>
+			<td class="item_removal" ><%= button_to "Remove this item", item, :method => :delete, :confirm => 'Are you sure?' %></td>
 		</tr>
 	<% end %>
 	<tr class="total_line" >
