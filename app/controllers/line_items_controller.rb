@@ -88,8 +88,10 @@ end
     respond_to do |format|
 	  if current_cart.line_items.empty?
         format.html { redirect_to(store_url, :notice=> 'Your cart is empty') }
+		format.js
       else 
-        format.html { redirect_to(store_url, :notice=> 'Item has been removed from your cart.') } 
+        format.html { redirect_to(store_url, :notice=> 'Item has been removed from your cart.') }
+		format.js
       end
 	  #format.html { redirect_to(@line_item.cart, :notice => 'Item has been removed from your cart.') }
       format.json { head :no_content }

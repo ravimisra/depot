@@ -8,5 +8,5 @@
 			<td class="item_price" ><%= number_to_currency(line_item.total_price) %></td>
 			<td><%= button_to "-", decrease_line_item_path(line_item), :method => :post, remote: true %></td>
 			<td><%= button_to "+", increase_line_item_path(line_item), :method => :post, remote: true %></td>
-			<td class="item_removal" ><%= button_to "X", line_item, :method => :delete, :confirm => 'Are you sure?' %></td>
+			<td><%= button_to "X", line_item, :method => :delete, remote: true, :confirm => 'Are you sure?' %></td>
 		</tr>
