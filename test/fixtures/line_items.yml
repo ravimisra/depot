@@ -10,7 +10,7 @@
 
 one:
   product: ruby
-  cart: one
+  order: one
 
 two:
   product: ruby
