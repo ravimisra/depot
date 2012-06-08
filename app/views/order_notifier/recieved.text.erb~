@@ -1,0 +1,3 @@
+OrderNotifier#recieved
+
+<%= @greeting %>, find me in app/views/app/views/order_notifier/recieved.text.erb
