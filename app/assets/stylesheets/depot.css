@@ -69,3 +69,9 @@
 	border-bottom: 1px dotted #595;
 	margin-bottom: 10px;
 }
+
+
+.locale {
+  float: right;
+  margin: -0.25em 0.1em;
+}
